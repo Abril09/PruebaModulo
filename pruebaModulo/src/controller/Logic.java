@@ -1,29 +1,30 @@
 package controller;
-
 import Model.Game;
+import utils.State;
 
 public class Logic {
     private Game game;
-    private StartController startController;
-    private PutController putController;
+    private LocaleStartController startController;
+    private LocalePutController putController;
 
     public Logic(){
         this.game = new Game();
-        this.startController = new StartController(game);
-        this.putController = new PutController(game);
+        this.startController = new LocaleStartController(game);
+        this.putController = new LocalePutController(game);
     }
 
-
-    public GameController getController(){
+    public ColocateController getController(){
         switch (this.game.getState()) {
             case START:
                  return  this.startController;
             case GAME:
-                 return this.putController;         
+                 return this.putController;      
             default:
-                break;
-        }
-        return null;
+                return  this.startController;                   
+          }
+    }
 
+    public State getGameState(){
+        return this.game.getState();
     }
 }

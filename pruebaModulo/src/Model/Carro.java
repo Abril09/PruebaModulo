@@ -3,12 +3,17 @@ package Model;
 import java.util.ArrayList;
 import java.util.List;
 
+import utils.Colors;
+
 public class Carro {
+
     protected int life;
     protected List<Coordinates> coordinates;
+    protected Colors color;
 
-    protected Carro(int life) {
+    protected Carro(int life,Colors color) {
         this.life = life;
+        this.color = color;
         this.coordinates = new ArrayList<>();
     }
 
@@ -27,14 +32,9 @@ public class Carro {
     public int getLife(){
         return this.life;
     }
-
-    public Boolean containsCoordinates(Coordinates coordinates) {
-        return this.coordinates.stream()
-                .anyMatch(x -> x.getFile() == coordinates.getFile() && x.getColumn() == coordinates.getColumn());
-    }
-
-    public void removeCoordinates(Coordinates coordinates) {
-        this.coordinates
+  
+    public Boolean removeCoordinates(Coordinates coordinates) {
+       return this.coordinates
                 .removeIf(x -> x.getFile() == coordinates.getFile() && x.getColumn() == coordinates.getColumn());
     }
 
@@ -44,5 +44,16 @@ public class Carro {
     public void setCoordinates(List<Coordinates> coordinates) {
        this.coordinates = coordinates;
     }
+
+    public Colors getColor() {
+        return color;
+    }
+
+    public String getColorToString(){
+        return this.color.getSimbol();
+    }
+
+
+
 
 }

@@ -1,10 +1,9 @@
-
 package Model;
-
 import utils.Colors;
+import utils.Configuracion;
 
 public class Board {
-    private  final Integer DIMENSION = 15;
+    private  final Integer DIMENSION = Configuracion.TAMAÑO_MATRIZ;
     private String [][] matrix;
 
     public Board (){
@@ -21,15 +20,16 @@ public class Board {
     }
     
     public Boolean isValid(int file, int column){
-     return matrix[file][column] == Colors.EMPY.getSimbol() 
-            && file < DIMENSION & column < DIMENSION ;
+     if(DIMENSION > file && column < DIMENSION && column >= 0 && 0 <= file){
+        return (this.matrix[file][column] == Colors.EMPY.getSimbol());  
+     }  
+      return false;   
     }
-
-
-
-    
+   
     public void put(int file, int column,String simbols){
-        matrix[file][column] = simbols; 
+        if(DIMENSION > file && column < DIMENSION ){
+            matrix[file][column] = simbols;
+        }
     }
 
     public void delete(int file, int column){
