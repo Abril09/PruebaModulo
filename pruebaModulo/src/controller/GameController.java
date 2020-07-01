@@ -2,6 +2,8 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import Model.Carro;
 import Model.Coordinates;
 import Model.Game;
@@ -15,8 +17,11 @@ public abstract class GameController {
         this.carros = new ArrayList<>();
 
     }
-
     public abstract void controller();
+
+    public void addCarro(Carro carro){
+        this.carros.add(carro);
+    }
 
     private Boolean isValidCoordinates(Coordinates coordinates) {
         return this.game.getBoard().isValid(coordinates.getFile(), coordinates.getFile());
@@ -24,29 +29,38 @@ public abstract class GameController {
 
     protected Coordinates firstCoordinateValid() {
         Coordinates coordinateRef = new Coordinates();
-        while (this.isValidCoordinates(coordinateRef)) {
+        while (!this.isValidCoordinates(coordinateRef)) {
             coordinateRef = new Coordinates();
         }
         return coordinateRef;
     }
 
-    protected List<Coordinates> rangeCoordinatesValid(int range) {
-        List<Coordinates> coordinatesList = new ArrayList<Coordinates>();
-        Coordinates coordinatesRef = this.firstCoordinateValid();
-        int x = coordinatesRef.getFile();
-        int y = coordinatesRef.getColumn();
-        //ordenar en tablero//
-        if (this.game.getBoard().isValid(x, (y + range))) {
-            
-        } else if (this.game.getBoard().isValid((x + range), y)) {
-
-        } else if (this.game.getBoard().isValid((x - range), y)) {
-
-        } else if (this.game.getBoard().isValid(x, (y - range))) {
-
-        }
-
-        return null;
+    protected Coordinates coordinateHorizontalLeft(Coordinates coordinate){
+          return new Coordinates(coordinate.getFile(),coordinate.getColumn()-1);
     }
 
-}
+    protected Coordinates coordinateHorizontalRight(Coordinates coordinate){
+        return new Coordinates(coordinate.getFile(),coordinate.getColumn()+1);
+    }
+
+    protected List<Coordinates> HorizontalCoordinateValid() {   
+        List<Coordinates> coordenadas = new ArrayList<>();
+         do {
+            Coordinates coordinateRef = this.firstCoordinateValid();
+            Coordinates coordinateRight = this.coordinateHorizontalRight(coordinateRef);
+            Coordinates coordinateLeft = this.coordinateHorizontalLeft(coordinateRef);            
+            if(this.isValidCoordinates(coordinateRight)){
+                coordenadas.add(coordinateRef);
+                coordenadas.add(coordinateRight);
+            }else if(this.isValidCoordinates(coordinateLeft)){
+                coordenadas.add(coordinateRef);
+                coordenadas.add(coordinateLeft);
+            }
+        } while (coordenadas.isEmpty());
+
+        return coordenadas;
+    }
+
+  
+
+}   

@@ -4,7 +4,7 @@ package Model;
 import utils.Colors;
 
 public class Board {
-    private  final Integer DIMENSION = 14;
+    private  final Integer DIMENSION = 15;
     private String [][] matrix;
 
     public Board (){
@@ -21,11 +21,11 @@ public class Board {
     }
     
     public Boolean isValid(int file, int column){
-     return matrix[file][column] != Colors.EMPY.getSimbol() 
+     return matrix[file][column] == Colors.EMPY.getSimbol() 
             && file < DIMENSION & column < DIMENSION ;
     }
 
-    
+
 
     
     public void put(int file, int column,String simbols){

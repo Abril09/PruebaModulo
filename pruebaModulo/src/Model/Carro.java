@@ -41,5 +41,8 @@ public class Carro {
     public List<Coordinates> getCoordinates() {
         return coordinates;
     }
+    public void setCoordinates(List<Coordinates> coordinates) {
+       this.coordinates = coordinates;
+    }
 
 }

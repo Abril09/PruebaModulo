@@ -1,10 +1,10 @@
 package Model;
 
 public class Caguano extends Carro {
-    private static final int life = 3;
+    private static final int LIFE= 2;
     
     public  Caguano() {
-        super(life);
+        super(LIFE);
     }
     
 }

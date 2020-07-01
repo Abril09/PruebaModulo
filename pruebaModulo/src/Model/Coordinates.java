@@ -17,6 +17,7 @@ public class Coordinates {
         this.column = random[1];
     }
     
+
     public int getFile() {
         return file;
     }
