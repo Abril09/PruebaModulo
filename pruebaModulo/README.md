@@ -1,5 +1,14 @@
-## 
-El proyecto consistió en desarrollar el Juego de la Cámara Secreta de Oscurilandia. Este fue realizado por un equipo conformado por 3 personas: Gonzalo Mora Mena Rodrigo Rebolledo Orellana Bernardita Castro Thompson La historia en que se basa este juego corresponde a levantamiento del pueblo contra el Gobierno corrupto de Oscurilandia, en donde se forma la FistLine que es un grupo de superhéroes que luchan contra que luchan contra el grupo de represión comandado por la Cámara Secreta. El mecanismo de lucha de la FistLine es el lanzamiento de huevos hacia el grupo represivo que está compuesto por vehículos motorizados: Kromis, Caguanos y Trupallas Para poder inutilizar a estos vehiculos, la FistLine debe ejecutar lanzamiento precisos dentro de una matriz de coordena. Estos lanzamientos efectivos entregarán puntajes: " Trupalla: 1 punto " ); " Kromi: 3 puntos y si la inutilizas +10 puntos " ; "Caguano: 2 puntos y si la inutizas + 7 puntos.
+##
+El proyecto consistió en desarrollar el Juego de la Cámara Secreta de Oscurilandia. 
+La historia  en que se basa este juego, corresponde a levantamiento del Pueblo contra el Gobierno corrupto de Oscurilandia , razón por la cual se forma la  "FirstLine" que es un grupo de superhéroes que lucha contra el grupo de represión, comandado por la Cámara Secreta. El mecanismo de lucha de la "FirstLine" es el lanzamiento de huevos hacia el grupo represivo, el cual está compuesto por vehículos motorizados:
+- Trupallas
+- Caguanos
+- Kromis
+
+Para poder inutilizar a estos vehiculos, la "FirstLine" debe ejecutar lanzamientos precisos dentro de la zona cero (matriz de coordena). Los lanzamientos efectivos entregarán puntajes:
+- Trupalla: 1 punto
+- Caguano: 2 puntos y si es inutilizada +7 puntos
+- Kromi: 3 puntos y si es inutilizada +10 puntos
 
 ## Integrantes
 - Gonzalo Mora Mena 
