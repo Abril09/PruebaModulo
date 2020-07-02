@@ -18,6 +18,7 @@ public class App {
 				if (controller != null) {
 					view.invocate(controller);
 				}
+		
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
