@@ -10,12 +10,14 @@ public class Game {
     private Board board;
     private List<Carro> carros;
     private int puntos;
+    private int life;
     
     public  Game(){
         this.state = State.START;
         this.board = new Board();
         this.carros = new ArrayList<>();
         this.puntos = 0;
+        this.life = 0;
     }
 
     public Board getBoard() {
@@ -50,7 +52,21 @@ public class Game {
         this.puntos = this.puntos +puntos;
     }
 
+    public int getLife() {
+        return life;
+    }
 
+    public void setLife(int life) {
+        this.life = life;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Life=" + life + ", Puntos=" + puntos + ", State=" + state + "]";
+    }
+
+  
     
     
 }

@@ -1,5 +1,5 @@
 package utils;
 
 public enum State {
-    START, GAME ,END 
+    START, GAME ,BEFORE_END,END 
 }

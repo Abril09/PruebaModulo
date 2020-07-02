@@ -1,5 +1,5 @@
 package controller;
 
-public interface StartController extends ColocateController {
+public interface StartController extends GameController {
     void start();
 }

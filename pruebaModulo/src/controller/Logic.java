@@ -5,20 +5,24 @@ import utils.State;
 public class Logic {
     private Game game;
     private LocaleStartController startController;
-    private LocalePutController putController;
+    private LocaleShootController putController;
+    private LocalEndingController endingController;
 
     public Logic(){
         this.game = new Game();
         this.startController = new LocaleStartController(game);
-        this.putController = new LocalePutController(game);
+        this.putController = new LocaleShootController(game);
+        this.endingController = new LocalEndingController(game);
     }
 
-    public ColocateController getController(){
+    public GameController getController(){
         switch (this.game.getState()) {
             case START:
                  return  this.startController;
             case GAME:
-                 return this.putController;      
+                 return this.putController;  
+            case BEFORE_END:
+                 return this.endingController;           
             default:
                 return  this.startController;                   
           }
@@ -26,5 +30,13 @@ public class Logic {
 
     public State getGameState(){
         return this.game.getState();
+    }
+
+    public void printBoard(){
+        this.game.getBoard().print();
+    }
+
+    public String getState(){
+        return this.game.toString();
     }
 }

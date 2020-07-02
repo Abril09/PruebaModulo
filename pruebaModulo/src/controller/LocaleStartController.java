@@ -10,58 +10,57 @@ import Model.Trupalla;
 import utils.Configuracion;
 import utils.State;
 
+public class LocaleStartController extends LocalGameController implements StartController {
+    private static int LIFE = Configuracion.PTS_LIFE_GAME;
 
-public class LocaleStartController extends GameController implements StartController{
     public LocaleStartController(Game game) {
         super(game);
+        this.game.setLife(LIFE);
     }
-
 
     public void start() {
         for (int i = 0; i < Configuracion.CANTIDAD_KROMIS; i++) {
-            this.printBoard(this.createkromi());
+            this.createkromi();
         }
         for (int i = 0; i < Configuracion.CANTIDAD_CAGUANOS; i++) {
-            this.printBoard(this.createCaguano());    
+            this.createCaguano();
         }
         for (int i = 0; i < Configuracion.CANTIDAD_TRUPALLAS; i++) {
-            this.printBoard(this.createTrupaya());    
+            this.createTrupaya();
         }
-    
-                 
-        this.game.getBoard().print();
+
+        this.printBoard();
         this.game.setState(State.GAME);
     }
-   
-    private Kromi createkromi(){
-        Kromi  kromi= new Kromi();
+
+    private void createkromi() {
+        Kromi kromi = new Kromi();
         List<Coordinates> list = this.verticalCoordinatesValid();
         kromi.setCoordinates(list);
-        return kromi;
+        this.addCarro(kromi);
+
     }
-    
-    private Trupalla createTrupaya(){
+
+    private void createTrupaya() {
         Trupalla trupaya = new Trupalla();
         trupaya.addCoordinates(this.firstCoordinateValid());
-        return trupaya;
+        this.addCarro(trupaya);
     }
 
-    private Caguano createCaguano(){
+    private void createCaguano() {
         Caguano caguano = new Caguano();
-        List<Coordinates> list = this.HorizontalCoordinateValid();      
+        List<Coordinates> list = this.HorizontalCoordinateValid();
         caguano.setCoordinates(list);
-        return caguano;
+        this.addCarro(caguano);
     }
 
-
-
-    private List<Coordinates> verticalCoordinatesValid(){
+    private List<Coordinates> verticalCoordinatesValid() {
         List<Coordinates> coordenadas = new ArrayList<>();
         do {
             Coordinates coordinateRef = this.firstCoordinateValid();
             Coordinates cordinateUP = this.coordinateVerticalUp(coordinateRef);
             Coordinates cordinaDown = this.coordinateVerticalDown(coordinateRef);
-            if(this.isValidCoordinates(cordinateUP)&& this.isValidCoordinates(cordinaDown)){
+            if (this.isValidCoordinates(cordinateUP) && this.isValidCoordinates(cordinaDown)) {
                 coordenadas.add(coordinateRef);
                 coordenadas.add(cordinateUP);
                 coordenadas.add(cordinaDown);
@@ -71,16 +70,16 @@ public class LocaleStartController extends GameController implements StartContro
         return coordenadas;
     }
 
-    private List<Coordinates> HorizontalCoordinateValid() {   
+    private List<Coordinates> HorizontalCoordinateValid() {
         List<Coordinates> coordenadas = new ArrayList<>();
-         do {
+        do {
             Coordinates coordinateRef = this.firstCoordinateValid();
             Coordinates coordinateRight = this.coordinateHorizontalRight(coordinateRef);
-            Coordinates coordinateLeft = this.coordinateHorizontalLeft(coordinateRef);            
-            if(this.isValidCoordinates(coordinateRight)){
+            Coordinates coordinateLeft = this.coordinateHorizontalLeft(coordinateRef);
+            if (this.isValidCoordinates(coordinateRight)) {
                 coordenadas.add(coordinateRef);
                 coordenadas.add(coordinateRight);
-            }else if(this.isValidCoordinates(coordinateLeft)){
+            } else if (this.isValidCoordinates(coordinateLeft)) {
                 coordenadas.add(coordinateRef);
                 coordenadas.add(coordinateLeft);
             }
@@ -89,10 +88,4 @@ public class LocaleStartController extends GameController implements StartContro
         return coordenadas;
     }
 
-    @Override
-    public void controller() {
-        // TODO Auto-generated method stub
-
-    }
-    
 }

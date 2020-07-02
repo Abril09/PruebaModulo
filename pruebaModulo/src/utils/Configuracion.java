@@ -10,5 +10,6 @@ public class Configuracion {
     public static final int PTS_CAGUANOS_DEAD = 7;
     public static final int PTS_KROMIS_SHOOT = 3;
     public static final int PTS_KROMIS_DEAD = 10;
+    public static final int PTS_LIFE_GAME = 35; 
    
 }
